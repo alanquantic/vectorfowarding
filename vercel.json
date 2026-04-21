@@ -1,0 +1,502 @@
+{
+  "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ],
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/sample-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/about-us-2",
+      "destination": "/#about",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us-2",
+      "destination": "/#contact",
+      "permanent": true
+    },
+    {
+      "source": "/clients",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/meet-the-team",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/services",
+      "destination": "/#services",
+      "permanent": true
+    },
+    {
+      "source": "/faq",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/blank-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/news",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/image-parallax",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ken-burns-slider",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ken-burns-2-slider",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fullscreen-video",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fullscreen-video-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/half-screen-parallax",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color-3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/personal-freelancer",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/agency-portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/photography-portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/personal-freelancer-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/landing-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/coming-soon-1",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/landing-coming-soon",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/architecture-design",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/barbers-hair-salon",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/coming-soon-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/coming-soon-3",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/parallax-dark",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/construction-renovation",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/dark-landing-page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color-4",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color-5",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/solid-color-6",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing-tables",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/team-member",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/welcome-to-cloudways",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/longer-waited-mr-of-nature-seemed",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/attachment-ye-so-am-travelling",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/projection-of-admiration-no-age",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/shall-there-whose-those-stand-end",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/decisively-everything-principles-if",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/acuteness-you-exquisite-ourselves",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/general-enquire-picture-letters-on",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/placing-forming-nay-looking-married",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/can-connection-instrument-raising",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/ladies-so-in-wholly-around-whence",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/estimable-me-disposing-of-few",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/state-burst-think-end-are-its-arrived",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/tried-on-cause-no-spoil-arise-plate",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/late-hour-new-nay-able-furniture",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/could-death-since-do-we-hoped-is",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/celebrated-am-announcing-delightful",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/reserved-opinions-fat-him-nay-position",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/you-folly-taste-hoped-their-above-are",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/the-taste-begin-early-since-dried",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/behaved-the-comfort-another-fifteen",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/from-image-creative",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/bred-soon-park",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/agreement-gentleman",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/means-among-saw",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/exquisite-by-admitting",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/very-his-are-come",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/favourable-cultivated",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/estate-was-tended",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/unsatiable-entreaties",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/always-polite-moment",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/nor-repeated-speaking",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/is-easy-took-he",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/celebrated-delightful",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/set-her-half-end",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/favourable-pianoforte",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/placing-assured",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/abilities-concluded-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/extensive-assurance",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/instantly-suffering",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/connection-instrument",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/esteem-put-uneasy",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/after-nor-leave",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/distrusts-fulfilled",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/on-merits-on-valley",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/year-kept-on-over",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/nay-middleton-him",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/front-sight-match",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/abilities-concluded",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/hardly-suffer-wisdom-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/quiet-leave-shy-you",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/smiling-cousins-law-2",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/portfolio/elderly-pursuit-regular-2",
+      "destination": "/",
+      "permanent": true
+    }
+  ]
+}
