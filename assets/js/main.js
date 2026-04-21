@@ -1,4 +1,4 @@
-const heroTitles = ["Grow your business", "Business startup", "Our story"];
+const heroTitles = ["Grow your business", "Business startup", "Closer to market"];
 
 const header = document.querySelector("[data-header]");
 const heroSlides = [...document.querySelectorAll("[data-hero-slide]")];
@@ -136,7 +136,7 @@ if (contactForm && feedback) {
       ].join("\n")
     );
 
-    feedback.textContent = "Opening your default email app...";
+    feedback.textContent = "Your email draft is opening...";
     window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
   });
 }
