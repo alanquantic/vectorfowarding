@@ -106,38 +106,59 @@ if ("IntersectionObserver" in window && revealItems.length) {
 }
 
 if (contactForm && feedback) {
-  contactForm.addEventListener("submit", (event) => {
+  contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const formData = new FormData(contactForm);
-    const contactEmail = contactForm.dataset.contactEmail || "";
     const name = String(formData.get("name") || "").trim();
     const email = String(formData.get("email") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const message = String(formData.get("message") || "").trim();
+    const submitButton = contactForm.querySelector('button[type="submit"]');
 
-    if (!contactEmail) {
-      feedback.textContent = "Add a contact email to the form before publishing.";
+    if (!name || !email || !message) {
+      feedback.textContent = "Please complete the required fields.";
       return;
     }
 
-    const subject = encodeURIComponent(
-      `Manufacturing project inquiry - ${name || "Vector website"}`
-    );
+    if (submitButton instanceof HTMLButtonElement) {
+      submitButton.disabled = true;
+    }
 
-    const body = encodeURIComponent(
-      [
-        `Name: ${name}`,
-        `Email: ${email}`,
-        `Phone: ${phone || "Not provided"}`,
-        "",
-        "Project details:",
-        message,
-      ].join("\n")
-    );
+    feedback.textContent = "Sending your inquiry...";
 
-    feedback.textContent = "Your email draft is opening...";
-    window.location.href = `mailto:${contactEmail}?subject=${subject}&body=${body}`;
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          email,
+          phone,
+          message,
+        }),
+      });
+
+      const result = await response.json().catch(() => null);
+
+      if (!response.ok) {
+        throw new Error(result?.error || "Unable to send your inquiry right now.");
+      }
+
+      contactForm.reset();
+      feedback.textContent = "Thanks. Your inquiry was sent successfully.";
+    } catch (error) {
+      feedback.textContent =
+        error instanceof Error
+          ? error.message
+          : "Unable to send your inquiry right now.";
+    } finally {
+      if (submitButton instanceof HTMLButtonElement) {
+        submitButton.disabled = false;
+      }
+    }
   });
 }
 
