@@ -369,6 +369,19 @@
           </div>
 
           <form class="contact-form" data-contact-form data-reveal>
+            <div class="hp-field" aria-hidden="true">
+              <label for="company_website">Company website</label>
+              <input
+                id="company_website"
+                name="company_website"
+                type="text"
+                tabindex="-1"
+                autocomplete="off"
+              >
+            </div>
+
+            <input type="hidden" name="formToken" data-form-token>
+
             <label>
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Your name" required>

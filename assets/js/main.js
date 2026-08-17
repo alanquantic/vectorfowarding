@@ -10,9 +10,22 @@ const menuToggle = document.querySelector("[data-menu-toggle]");
 const menu = document.querySelector("[data-menu]");
 const contactForm = document.querySelector("[data-contact-form]");
 const feedback = document.querySelector("[data-form-feedback]");
+const formTokenInput = document.querySelector("[data-form-token]");
 
 let heroIndex = 0;
 let aboutIndex = 0;
+
+async function loadFormToken() {
+  if (!(formTokenInput instanceof HTMLInputElement)) return;
+
+  try {
+    const response = await fetch("/api/form-token", { cache: "no-store" });
+    const data = response.ok ? await response.json() : null;
+    if (data?.token) formTokenInput.value = data.token;
+  } catch {
+    // The server degrades gracefully when FORM_SECRET is not configured.
+  }
+}
 
 function setHeaderState() {
   if (!header) return;
@@ -114,6 +127,8 @@ if (contactForm && feedback) {
     const email = String(formData.get("email") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const message = String(formData.get("message") || "").trim();
+    const companyWebsite = String(formData.get("company_website") || "").trim();
+    const formToken = String(formData.get("formToken") || "");
     const submitButton = contactForm.querySelector('button[type="submit"]');
 
     if (!name || !email || !message) {
@@ -138,6 +153,8 @@ if (contactForm && feedback) {
           email,
           phone,
           message,
+          company_website: companyWebsite,
+          formToken,
         }),
       });
 
@@ -149,6 +166,7 @@ if (contactForm && feedback) {
 
       contactForm.reset();
       feedback.textContent = "Thanks. Your inquiry was sent successfully.";
+      loadFormToken();
     } catch (error) {
       feedback.textContent =
         error instanceof Error
@@ -167,3 +185,5 @@ window.addEventListener("load", setHeaderState);
 setHeaderState();
 setHero(0);
 setAbout(0);
+loadFormToken();
+window.setInterval(loadFormToken, 45 * 60 * 1000);

@@ -19,6 +19,17 @@ Version estatica en `HTML + CSS + JS` del sitio `vectorforwarding.com.mx`, prepa
 
 No hace falta comando de build.
 
+## Variables de entorno
+
+Copia los nombres de `.env.example` al proyecto de Vercel. Además de las
+variables de Resend, configura `FORM_SECRET` con un valor aleatorio de al menos
+32 bytes para activar la validación de tiempo del formulario. Puedes generarlo
+con `openssl rand -hex 48`.
+
+El formulario incluye honeypot, validación estricta en servidor, token de tiempo
+firmado y un rate limit en memoria como protección de respaldo. Este último no
+reemplaza un almacén compartido (KV/Redis) si el sitio recibe mucho tráfico.
+
 ## Ajustes recomendados antes de publicar
 
 - Si cambias de dominio, actualiza:

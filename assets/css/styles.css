@@ -672,11 +672,21 @@ ul {
 }
 
 .contact-form {
+  position: relative;
   padding: 1.6rem;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.7);
   box-shadow: var(--shadow);
+}
+
+.hp-field {
+  position: absolute;
+  top: -9999px;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
 }
 
 .contact-form label {
