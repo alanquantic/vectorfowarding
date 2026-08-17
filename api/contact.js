@@ -1,3 +1,5 @@
+import { runAntiSpamChecks, logAndFakeSuccess } from "./_lib/anti-spam.js";
+
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const RESEND_FROM =
   process.env.RESEND_FROM || "no-reply@vectorforwarding.com.mx";
@@ -32,7 +34,19 @@ export default async function handler(request, response) {
     return json(response, 500, { error: "Missing RESEND_API_KEY." });
   }
 
-  const { name = "", email = "", phone = "", message = "" } = request.body || {};
+  const body = request.body || {};
+  const { name = "", email = "", phone = "", message = "" } = body;
+
+  // ── Anti-spam (rechazo silencioso: 200 con cuerpo tipo éxito) ──
+  const antiSpam = runAntiSpamChecks({
+    body,
+    fields: { name: "name", email: "email", phone: "phone", message: "message" },
+    rateLimitKey: typeof email === "string" ? email.trim().toLowerCase() : undefined,
+  });
+  if (!antiSpam.ok) {
+    logAndFakeSuccess(antiSpam.reason, "CONTACT");
+    return json(response, 200, { ok: true, id: null });
+  }
 
   const safeName = String(name).trim();
   const safeEmail = String(email).trim();

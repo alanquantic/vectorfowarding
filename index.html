@@ -369,6 +369,13 @@
           </div>
 
           <form class="contact-form" data-contact-form data-reveal>
+            <!-- Honeypot anti-spam: invisible para humanos y lectores de pantalla. -->
+            <div aria-hidden="true" style="position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden;">
+              <label for="company_website">Company website</label>
+              <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off" value="">
+            </div>
+            <input type="hidden" name="form_token" data-form-token value="">
+
             <label>
               <span>Name</span>
               <input type="text" name="name" autocomplete="name" placeholder="Your name" required>
