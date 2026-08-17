@@ -105,6 +105,41 @@ if ("IntersectionObserver" in window && revealItems.length) {
   revealItems.forEach((item) => item.classList.add("is-visible"));
 }
 
+// ── Anti-spam: fetch del token con retry exponencial y refresh cada 45 min ──
+const tokenInput = document.querySelector("[data-form-token]");
+const TOKEN_REFRESH_MS = 45 * 60 * 1000;
+const TOKEN_MAX_RETRIES = 4;
+let tokenAttempts = 0;
+let tokenTimer = null;
+
+async function loadFormToken() {
+  try {
+    const res = await fetch("/api/form-token", { credentials: "same-origin" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const data = await res.json();
+    if (!data?.token) throw new Error("respuesta sin token");
+    if (tokenInput) tokenInput.value = String(data.token);
+    tokenAttempts = 0;
+    tokenTimer = setTimeout(loadFormToken, TOKEN_REFRESH_MS);
+  } catch (_err) {
+    tokenAttempts += 1;
+    if (tokenAttempts <= TOKEN_MAX_RETRIES) {
+      const delay = Math.min(1000 * Math.pow(2, tokenAttempts - 1), 8000);
+      tokenTimer = setTimeout(loadFormToken, delay);
+    }
+  }
+}
+
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible" && tokenInput && !tokenInput.value) {
+    tokenAttempts = 0;
+    if (tokenTimer) clearTimeout(tokenTimer);
+    loadFormToken();
+  }
+});
+
+if (tokenInput) loadFormToken();
+
 if (contactForm && feedback) {
   contactForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -114,6 +149,8 @@ if (contactForm && feedback) {
     const email = String(formData.get("email") || "").trim();
     const phone = String(formData.get("phone") || "").trim();
     const message = String(formData.get("message") || "").trim();
+    const companyWebsite = String(formData.get("company_website") || "");
+    const formToken = String(formData.get("form_token") || "");
     const submitButton = contactForm.querySelector('button[type="submit"]');
 
     if (!name || !email || !message) {
@@ -138,6 +175,8 @@ if (contactForm && feedback) {
           email,
           phone,
           message,
+          company_website: companyWebsite,
+          form_token: formToken,
         }),
       });
 
